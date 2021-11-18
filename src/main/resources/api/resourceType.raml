@@ -1,0 +1,41 @@
+#%RAML 1.0 Library
+traits:
+  error: !include traits/errorlib.raml
+  query: !include traits/querytrait.raml
+resourceTypes:
+  collection:
+    get?:
+      is:
+        - error
+        - query
+      description: this is to fetch <<resourcePathName>>
+      responses:
+       200:
+         body:
+           application/json:
+             type: |
+               <<gettype>>  
+             example: |
+                <<getexample>>
+    post?:
+      is:
+        - error
+      description: "this is used to create <<resourcePathName>>"
+      body:
+        application/json:
+          example: |
+            <<postexample1>>
+          type: |
+            <<posttype1>>
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                <<postexample2>>
+              type: |
+                <<posttype2>>  
+                
+            
+      
+              
